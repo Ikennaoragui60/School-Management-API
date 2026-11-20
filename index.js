@@ -1,4 +1,5 @@
-
+const env = require("dotenv")
+env.config()
 const express = require("express")
 require("./db")
 
