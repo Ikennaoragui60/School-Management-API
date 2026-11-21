@@ -59,4 +59,22 @@ const getStudent = async (req, res) => {
     }
 }
 
-module.exports = { createStudent, registerCourse, getStudent }
+const getAllStudent = async(req,res)=>{
+    try {
+
+        const data = await Student.find()
+
+        if(data.length <1){
+return res.status(404).json({message: "No students found"})
+        }
+        
+        res.status(200).json({
+            message:'Students succesfully retrieved',
+            data
+        })
+    } catch (error) {
+            res.status(500).json({ message: err.message })
+    }
+}
+
+module.exports = { createStudent, registerCourse, getStudent ,getAllStudent}
